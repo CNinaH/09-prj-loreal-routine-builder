@@ -84,6 +84,8 @@ body {
   background: #ffffff;
   margin-bottom: 20px;
   border: 1px solid #e3ab35;
+  display: flex;
+  flex-direction: column;
 }
 
 /* placeholder message */
@@ -140,6 +142,57 @@ body {
 .chat-form button:focus {
   outline: 2px solid #ff003b;
   outline-offset: 2px;
+}
+
+/* Chat bubbles for conversation */
+.chat-message {
+  max-width: 80%;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 17px;
+  line-height: 1.6;
+  word-break: break-word;
+  box-shadow: 0 2px 8px 0 #d3d1ca;
+  display: inline-block;
+  clear: both;
+}
+
+.chat-message.user {
+  background: #ff003b;
+  color: #ffffff;
+  align-self: flex-end;
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 18px;
+}
+
+.chat-message.assistant {
+  background: #fffbe8;
+  color: #000;
+  align-self: flex-start;
+  margin-right: auto;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 18px;
+}
+
+/* Style the routine generator response as a chat bubble */
+.chat-message.routine {
+  background: #e3ab35;
+  color: #000;
+  align-self: flex-start;
+  max-width: 80%;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 17px;
+  line-height: 1.6;
+  word-break: break-word;
+  box-shadow: 0 2px 8px 0 #d3d1ca;
+  display: inline-block;
+  clear: both;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 18px;
 }
 
 /* visually hidden */
@@ -335,4 +388,30 @@ body {
 
 .generate-btn i {
   margin-right: 8px;
+}
+
+/* Style for the Clear All button in selected products */
+.clear-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #ff003b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  display: block;
+}
+
+.clear-btn:hover {
+  background: #e3ab35;
+  color: #000000;
+}
+
+.clear-btn:focus {
+  outline: 2px solid #ff003b;
+  outline-offset: 2px;
 }

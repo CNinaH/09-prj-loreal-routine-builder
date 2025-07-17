@@ -250,7 +250,14 @@ chatForm.addEventListener("submit", async (e) => {
   chatForm.querySelector("input, textarea").value = "";
 });
 
-/* Helper: append a chat message bubble to the chat window */
+/* Helper: Show a message in the chat window as a routine message bubble */
+function showRoutineMessage(message) {
+  // Remove any previous content and show as a routine chat bubble
+  chatWindow.innerHTML = "";
+  appendChatMessage(message, "routine");
+}
+
+// Helper: append a chat message bubble to the chat window */
 function appendChatMessage(message, sender) {
   const bubble = document.createElement("div");
   bubble.className = `chat-message ${sender}`;
@@ -265,11 +272,6 @@ function appendChatMessage(message, sender) {
 // Get reference to the Generate Routine button
 const generateBtn = document.querySelector(".generate-btn"); // Find the Generate Routine button
 
-// Helper: Show a message in the chat window
-function showChatMessage(message) {
-  chatWindow.innerHTML = `<div>${message}</div>`; // Show a message in the chat window
-}
-
 // Helper: Collect selected products with required fields
 function getSelectedProductsForRoutine() {
   // Only include name, brand, category, and description for each product
@@ -283,8 +285,8 @@ function getSelectedProductsForRoutine() {
 
 // Async function to call OpenAI API and get a routine
 async function generateRoutineWithOpenAI(products) {
-  // Show loading message
-  showChatMessage("Generating your personalized routine..."); // Let the user know it's working
+  // Show loading message as routine bubble
+  showRoutineMessage("Generating your personalized routine...");
 
   // Prepare the messages for the OpenAI API
   const messages = [
@@ -323,11 +325,11 @@ async function generateRoutineWithOpenAI(products) {
       data.choices[0]?.message?.content ||
       "No routine generated. Please try again."; // Get the AI's reply or show error
 
-    // Show the reply in the chat window
-    showChatMessage(reply); // Display the routine to the user
+    // Show the reply in the chat window as a routine bubble
+    showRoutineMessage(reply);
   } catch (error) {
-    // Show error message in the chat window
-    showChatMessage("Error generating routine. Please try again later."); // Show error if something goes wrong
+    // Show error message in the chat window as a routine bubble
+    showRoutineMessage("Error generating routine. Please try again later.");
   }
 }
 
@@ -339,7 +341,7 @@ if (generateBtn) {
     const products = getSelectedProductsForRoutine(); // Get selected products
     if (products.length === 0) {
       // If none selected
-      showChatMessage(
+      showRoutineMessage(
         "Please select at least one product to generate a routine."
       ); // Ask user to select products
       return; // Stop here

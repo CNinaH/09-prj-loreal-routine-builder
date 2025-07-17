@@ -156,6 +156,8 @@ body {
   box-shadow: 0 2px 8px 0 #d3d1ca;
   display: inline-block;
   clear: both;
+  font-family: "Helvetica Now Display", "Montserrat", Arial, Helvetica,
+    sans-serif;
 }
 
 .chat-message.user {
@@ -168,7 +170,7 @@ body {
 }
 
 .chat-message.assistant {
-  background: #fffbe8;
+  background: #e3ab35;
   color: #000;
   align-self: flex-start;
   margin-right: auto;
@@ -291,7 +293,7 @@ body {
   top: 6px;
   right: 6px;
   background: #ff003b;
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   width: 28px;
